@@ -1,0 +1,28 @@
+#initialization of the values
+net_income = 0
+gross_income = 0
+total_deduction = 0
+name_of_employee = " "
+pag_ibig_contribution = 100
+
+#getting inputs for the values of rate
+name_of_employee = str(input("Enter the employee's name:"))
+rate_per_hour = float(input("Enter the employee's rate per hour:"))
+hour_per_day = int(input("Enter the number of hours per day:"))
+days_per_week = int(input("Enter the number of days per week:"))
+weeks_per_month = int(input("Enter the number of weeks per month:"))
+SSS_contribution = float(input("Enter the amount of SSS contribution:"))
+PhilHealth_contribution = float(input("Enter the amount of Philhealth Contribution:"))
+
+#calculations for gross income and total deduction
+gross_income = rate_per_hour*hour_per_day*days_per_week*weeks_per_month
+total_deduction = SSS_contribution+PhilHealth_contribution+pag_ibig_contribution
+
+#calculation for net income
+net_income = gross_income-total_deduction
+
+#displaying the computed value of gross income, total deduction and net income
+print("Employee's Name:", name_of_employee)
+print("The gross income is", gross_income)
+print("The total deductions is", total_deduction)
+print("The net income is", net_income)
