@@ -14,7 +14,7 @@ def get_employee_info():
     rate_per_hour = float(input("Enter the rate per hour: "))
     hours_per_payday = float(input("Enter the number of hours per payday: "))
     hours_overtime = float(input("Enter the number of hours overtime: "))
-    honorarium = float(input("Enter the numbers of hour of honorarium: "))
+    honorarium = float(input("Enter the amount of honorarium: "))
 
     # Input number of hours absent and tardy
     hours_absent = float(input("Enter the number of hours absent: "))
@@ -23,7 +23,6 @@ def get_employee_info():
     # Compute Basic Pay, Overtime pay and honorarium Pay
     basic_pay = rate_per_hour*hours_per_payday
     overtime_pay = rate_per_hour*hours_overtime
-    honorarium_pay= rate_per_hour*honorarium
 
     #Compute for absence and tardiness
     absence = rate_per_hour*hours_absent
