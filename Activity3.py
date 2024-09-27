@@ -107,27 +107,7 @@ def get_employee_info():
         sss_contribution = 900.00
     elif 22250 <= gross_earnings <= 22749.99:
         sss_contribution = 900.00
-    elif 22750 <= gross_earnings <= 23249.99:
-        sss_contribution = 900.00
-    elif 23250 <= gross_earnings <= 23749.99:
-        sss_contribution = 900.00
-    elif 23750 <= gross_earnings <= 24249.99:
-        sss_contribution = 900.00
-    elif 24250 <= gross_earnings <= 24749.99:
-        sss_contribution = 900.00
-    elif 24750 <= gross_earnings <= 25249.99:
-        sss_contribution = 900.00
-    elif 25250 <= gross_earnings <= 25749.99:
-        sss_contribution = 900.00
-    elif 25750 <= gross_earnings <= 26249.99:
-        sss_contribution = 900.00
-    elif 26250 <= gross_earnings <= 26749.99:
-        sss_contribution = 900.00
-    elif 26750 <= gross_earnings <= 27249.99:
-        sss_contribution = 900.00
-    elif 27250 <= gross_earnings <= 27749.99:
-        sss_contribution = 900.00
-     else:
+    else:
         sss_contribution = 900.00
 
 
