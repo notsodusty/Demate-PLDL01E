@@ -28,7 +28,7 @@ def get_employee_info():
     absence = rate_per_hour*hours_absent
     tardy = rate_per_hour*hours_tardy
     # Compute Gross Earnings
-    gross_earnings = basic_pay+overtime_pay+honorarium_pay
+    gross_earnings = basic_pay+overtime_pay+honorarium
 
     # Determine SSS Contribution
     if gross_earnings <= 4249.99:
@@ -181,7 +181,7 @@ def get_employee_info():
     print("Basic Pay: ",basic_pay)
     print("Overtime: ", overtime_pay)
     print("Absences:", absence)
-    print("Honorarium:", honorarium_pay)
+    print("Honorarium:", honorarium)
     print("Tardiness:", tardy)
     print("Withholding Tax: ", round(withholding_tax, 2))
     print("SSS Contribution: ", round(sss_contribution, 2))
