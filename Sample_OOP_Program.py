@@ -136,7 +136,17 @@ class Employee:
         print("Gross Income: %.2f" % self.emp_gross_earnings)
         print("Absences: %.2f" % self.emp_absences)
         print("Tardiness: %.2f" % self.emp_tardiness)
+        print("Tax Contribution: %.2f" % self.tax_contribution)
         print("SSS Contribution: %.2f" % self.sss_contribution)
         print("Philhealth Contribution: %.2f" % self.philhealth_contribution)
         print("Net Income: %.2f" % self.net_pay)
 
+
+emp1= Employee()
+emp1.emp_salary_computation()
+emp1.emp_sss_contribution()
+emp1.emp_philhealth_contribution()
+emp1.emp_tax_contribution()
+emp1.emp_total_deduction()
+emp1.emp_employee_netpay()
+emp1.emp_displayEmployee()
