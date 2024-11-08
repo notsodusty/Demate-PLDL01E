@@ -1,92 +1,67 @@
-class Student:
-    def __init__(self, name, course, student_number, academic_year):
-        self.name = name
-        self.course = course
-        self.student_number = student_number
-        self.academic_year = academic_year
+class StudentInfo: # Class for student information
+    def __init__(self): # initialize the student information
+        self.student_name = input("Enter student name: ")
+        self.student_course = input("Enter student's course: ")
+        self.student_number = input("Enter student number: ")
+        self.academic_year = input("Enter academic year: ")
+        self.date_printed = input("Enter the current date: ")
+        self.num_sections = 0
+        self.get_subject = []
 
-class Assessment:
-    def __init__(self, sections):
-        self.sections = sections
+    def get_subjects(self): # method to get the subjects
+        self.num_sections = int(input("Enter number of sections: "))
+        for _ in range(self.num_sections):
+            section = input("Enter section: ")
+            num_subjects = int(input(f'Enter number of subjects for section {section}: '))
+            for _ in range(num_subjects):
+                subject = input("Enter subject: ")
+                units = int(input(f'Enter number of units for {subject}: '))
+                self.get_subject.append((section, subject, units))
+
+    def get_subjects_info(self): # method to get the subject information
+        return self.get_subject
+
+    def total_units(self): # method to get the total units
+        return sum(units for _, _, units in self.get_subject)
+
+class Assessment: # Class for assessment
+    def __init__(self, student): # initialize the assessment values
+        self.student = student
+        self.downpayment = 0
+        self.tuition_fee = 0
+        self.total_due = 0
+        self.total_units = self.student.total_units()
         self.tuition_fee_per_unit = 1551.00
-        self.assessment_fees = {}
+        self.adu_chronicle = float(input("Enter ADU Chronicle fee: "))
+        self.athletic = float(input("Enter Athletic fee: "))
+        self.audio_visual = float(input("Enter Audio Visual Library fee: "))
+        self.ausg = float(input("Enter AUSG fee: "))
+        self.cultural_fee = float(input("Enter Cultural fee: "))
+        self.energy_cost_aircon_classroom = float(input("Enter Energy Cost, AirCon Classroom fee: "))
+        self.guidance = float(input("Enter Guidance fee: "))
+        self.insurance = float(input("Enter Insurance fee: "))
+        self.learning_management_system = float(input("Enter Learning Management System fee: "))
+        self.library_fee = float(input("Enter Library fee: "))
+        self.medical_and_dental = float(input("Enter Medical and Dental fee: "))
+        self.registration = float(input("Enter Registration fee: "))
+        self.rso = float(input("Enter RSO fee: "))
+        self.student_activities_fee = float(input("Enter Student Activities fee: "))
+        self.student_nurturance_fee = float(input("Enter Student Nurturance fee: "))
+        self.technology_fee = float(input("Enter Technology fee: "))
+        self.test_papers = float(input("Enter Test Papers fee: "))
+        self.downpayment = float(input("Enter Downpayment amount: "))
 
-    def add_subject(self, section, subject, units):
-        if section not in self.sections:
-            self.sections[section] = []
-        self.sections[section].append({'subject': subject, 'units': units})
+    def get_tuition_fee(self): # method to get the tuition fee
+        self.tuition_fee = self.total_units * self.tuition_fee_per_unit
+        return self.tuition_fee
 
-    def compute_tuition_fee(self):
-        total_units = sum(subject['units'] for section in self.sections.values() for subject in section)
-        return total_units * self.tuition_fee_per_unit
+    def get_total_due(self): # method to get the total due
+        self.total_due = self.get_total_assessment_amount() - self.downpayment
+        return self.total_due
 
-    def compute_assessment_amount(self):
-        tuition_fee = self.compute_tuition_fee()
-        other_fees = sum(self.assessment_fees.values())
-        return tuition_fee + other_fees
-
-    def compute_total_due(self, downpayment):
-        assessment_amount = self.compute_assessment_amount()
-        return assessment_amount + downpayment
-
-    def compute_payment_terms(self, total_due):
-        return total_due / 3
-
-def main():
-    # Input student details
-    name = input("Enter student name: ")
-    course = input("Enter course: ")
-    student_number = input("Enter student number: ")
-    academic_year = input("Enter academic year: ")
-
-    student = Student(name, course, student_number, academic_year)
-
-    # Input current date
-    current_date = input("Enter current date: ")
-    print(f"Date Printed: {current_date}")
-
-    # Input sections, subjects, and units
-    sections = {}
-    num_sections = int(input("Enter number of sections: "))
-    for _ in range(num_sections):
-        section = input("Enter section: ")
-        num_subjects = int(input(f"Enter number of subjects for section {section}: "))
-        for _ in range(num_subjects):
-            subject = input("Enter subject: ")
-            units = int(input(f"Enter units for subject {subject}: "))
-            if section not in sections:
-                sections[section] = []
-            sections[section].append({'subject': subject, 'units': units})
-
-    assessment = Assessment(sections)
-
-    # Input assessment fees (excluding Tuition Fee Lecture)
-    num_fees = int(input("Enter number of other assessment fees: "))
-    for _ in range(num_fees):
-        fee_name = input("Enter fee name: ")
-        fee_amount = float(input(f"Enter amount for {fee_name}: "))
-        assessment.assessment_fees[fee_name] = fee_amount
-
-   # Compute Tuition Fee Lecture
-    tuition_fee = assessment.compute_tuition_fee()
-    print(f"Tuition Fee Lecture: P {tuition_fee:.2f}")
-
-    # Compute Assessment Amount
-    assessment_amount = assessment.compute_assessment_amount()
-    print(f"Assessment Amount: P {assessment_amount:.2f}")
-
-    # Input downpayment
-    downpayment = float(input("Enter downpayment: "))
-
-    # Compute Total Due
-    total_due = assessment.compute_total_due(downpayment)
-    print(f"Total Due: P {total_due:.2f}")
-
-    # Compute payment terms
-    payment_term = assessment.compute_payment_terms(total_due)
-    print(f"Prelims: P {payment_term:.2f}")
-    print(f"Midterms: P {payment_term:.2f}")
-    print(f"Finals: P {payment_term:.2f}")
-
-if __name__ == "__main__":
-  main()
+    def get_total_assessment_amount(self): # method to get the total assessment amount
+        return (self.tuition_fee + self.adu_chronicle + self.athletic + self.audio_visual + self.ausg +
+                self.cultural_fee + self.energy_cost_aircon_classroom + self.guidance + self.insurance +
+                self.learning_management_system + self.library_fee + self.medical_and_dental + self.registration +
+                self.rso + self.student_activities_fee + self.student_nurturance_fee + self.technology_fee +
+                self.test_papers)
