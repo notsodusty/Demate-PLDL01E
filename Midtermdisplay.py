@@ -1,13 +1,13 @@
 import MidtermQ1
 
 def main():
-
+    # Call the Classes
     customer = MidtermQ1.CustomerInfo()
     electric_bill = MidtermQ1.ElectricBill()
     service_info = MidtermQ1.ServiceInfo(customer)
     billing_info = MidtermQ1.BillingInfo(electric_bill)
     bill_summary = MidtermQ1.BillComputationSummary(electric_bill)
-
+  # Call the Display function
     display_customer_info(customer)
     display_electric_bill(electric_bill)
     display_service_info(service_info)
@@ -46,6 +46,7 @@ def display_electric_bill(electric_bill):
     **************************
     ''')
 def display_service_info(service_info):
+    # Display service info
     print(f'''
     Service ID Number: {service_info.service_id_number}
     Rate: {service_info.rate}
@@ -57,6 +58,7 @@ def display_service_info(service_info):
     ''')
 
 def display_billing_info(billing_info):
+    # Display Billing Info
     print(f'''
     Bill Date: {billing_info.bill_date}
     Meter Reading Date: {billing_info.meter_reading_date}
@@ -65,10 +67,12 @@ def display_billing_info(billing_info):
     Total KWH: {billing_info.total_kwh}
     Total Current Amount: {billing_info.total_current_amount}
     Next Meter Reading: {billing_info.next_meter_reading}
+    Amount Due: {billing_info.amount_due}
     **************************
     ''')
 
 def display_bill_summary(bill_summary):
+    # Display Bill Summary
     print(f'''
     Generation: {bill_summary.generation}
     Transmission: {bill_summary.transmission}

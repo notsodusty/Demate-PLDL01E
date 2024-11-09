@@ -9,19 +9,20 @@ class CustomerInfo: # Class for Customer Information
         self.customer_account_number = input("Enter customer account number: ")
 
 class ElectricBill: # Class for Electric Bill
-    def __init__(self):
+    def __init__(self):# initialize Electric Bill
         self.balance = int(input("Enter balance from previous billing: "))
         self.current_amount_due = input("Enter amount due: ")
         self.current_due_date = input("Enter due date: ")
         self.total_amount_due = 0
 
+#solving for total amount due
     def get_total_amount_due(self):
         self.total_amount_due = self.balance + self.current_amount_due
         return self.total_amount_due
 
 
-class ServiceInfo:
-    def __init__(self, customer):
+class ServiceInfo: # Class for Service Info
+    def __init__(self, customer):# initialize the service info
         self.customer = customer
         self.service_id_number = customer.customer_account_number
         self.rate = input("Enter Residential or Business: ")
@@ -33,8 +34,9 @@ class ServiceInfo:
         self.contact_city = customer.city
 
 
-class BillingInfo:
-    def __init__(self, bill):
+class BillingInfo: # Class for Billing Info
+
+    def __init__(self, bill): # initialize the billing info
         self.bill = bill
         self.bill_date = input("Enter bill date: ")
         self.meter_reading_date = input("Enter meter reading date: ")
@@ -46,13 +48,14 @@ class BillingInfo:
         self.next_meter_reading = input("Enter next meter reading: ")
         self.amount_due = 0
 
+# solving for amount due
     def get_amount_due(self):
         self.amount_due = self.rate_per_kwh * self.total_kwh
         return self.amount_due
 
 
-class BillComputationSummary:
-    def __init__(self, bill):
+class BillComputationSummary: #Class for Bill Computation Summary
+    def __init__(self, bill): # initialize the bill computation summary
         self.billing = bill
         self.remaining_balance = bill.balance
         self.generation = input("Enter Generation fee: ")
