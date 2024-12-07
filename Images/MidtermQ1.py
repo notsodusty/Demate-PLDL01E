@@ -37,7 +37,7 @@ class ServiceInfo: # Class for Service Info
 class BillingInfo: # Class for Billing Info
 
     def __init__(self, bill): # initialize the billing info
-        self.bill = bill
+        self.bill = b ill
         self.bill_date = input("Enter bill date: ")
         self.meter_reading_date = input("Enter meter reading date: ")
         self.bill_period = input("Enter bill period: ")
